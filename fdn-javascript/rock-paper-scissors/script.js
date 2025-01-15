@@ -1,11 +1,13 @@
 function startGameInstance(){
     // Initiates a Scissors Paper Stone game
-    let userScore = computerScore = 0; // Initialize scores
+
     const numRounds = 5;               // Set number of rounds per game
 
     let play = 1;
 
     while (play){
+        let userScore = computerScore = 0; // Initialize scores
+
         for (let n = 0; n < numRounds; n++){
 
             userMove = getUserMove();
