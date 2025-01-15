@@ -20,6 +20,9 @@ function startGameInstance(){
         }
         play = prompt(`The game is finished! Points are ${"You: " + userScore + " - Computer: " + computerScore}. 
             Do you want to play again? Enter 1 if yes, 0 if no.`);
+        while ( play != 0 && play != 1){
+            prompt ("Invalid input. Do you want to play again? Enter 1 if yes, 0 if no.")
+        }
     }
 
     
