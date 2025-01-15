@@ -1,3 +1,30 @@
+function startGameInstance(){
+    // Initiates a Scissors Paper Stone game
+    let userScore = computerScore = 0; // Initialize scores
+    const numRounds = 5;               // Set number of rounds per game
+
+    let play = 1;
+
+    while (play){
+        for (let n = 0; n < numRounds; n++){
+            result = getResult(getUserMove(), getComputerMove());
+            if (result > 0){
+                userScore++;
+                alert(`Win! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
+            } else if (result === 0) {
+                alert(`Draw! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
+            } else {
+                computerScore++;
+                alert(`Loss! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
+            }
+        }
+        play = prompt(`The game is finished! Points are ${"You: " + userScore + " - Computer: " + computerScore}. 
+            Do you want to play again? Enter 1 if yes, 0 if no.`);
+    }
+
+    
+}
+
 function getUserMove(){
     // Get the user's move via prompt window
     let move = Number(prompt("Please make a move: 1- rock, 2- paper, 3- scissors"));
@@ -33,3 +60,5 @@ function getResult(userMove, computerMove){
         return -1;                                 // Loss
     }
 }
+
+startGameInstance();
