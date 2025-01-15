@@ -10,4 +10,11 @@ function getUserMove(){
     return move;
 }
 
+function getComputerMove(){
+    // Randomly generate computer's move by returning a number from {1,2,3}
+    // 1- rock, 2- paper, 3- scissors
+
+    return Math.ceil(Math.random()*3);
+}
+
 let userMove = getUserMove();
