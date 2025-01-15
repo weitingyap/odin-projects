@@ -33,5 +33,3 @@ function getResult(userMove, computerMove){
         return -1;                                 // Loss
     }
 }
-
-let userMove = getUserMove();
