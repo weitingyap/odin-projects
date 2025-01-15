@@ -17,4 +17,21 @@ function getComputerMove(){
     return Math.ceil(Math.random()*3);
 }
 
+function getResult(userMove, computerMove){
+    // 1- rock, 2- paper, 3- scissors
+    // userMove and computerMove input in Number type
+    // return 1 if it's a win, return -1 if it's a loss, return 0 if it's a draw
+
+    if (userMove === computerMove) {              // Draw
+        return 0;
+    } else if ( 
+        (userMove == 1 && computerMove == 3)      // Win: User's rock beats scissors
+        || userMove == computerMove + 1)          // Win: User's scissors beats paper; or paper beats rock
+        {
+        return 1;
+    } else {
+        return -1;                                 // Loss
+    }
+}
+
 let userMove = getUserMove();
