@@ -7,15 +7,22 @@ function startGameInstance(){
 
     while (play){
         for (let n = 0; n < numRounds; n++){
-            result = getResult(getUserMove(), getComputerMove());
-            if (result > 0){
+
+            userMove = getUserMove();
+            computerMove = getComputerMove();
+
+            if (userMove === computerMove){
+                alert(`${userMove} meets ${computerMove}: Draw! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
+            } else if (
+                (userMove === 'paper' && computerMove === 'rock') ||
+                (userMove === 'rock'  && computerMove === 'scissors') || 
+                (userMove === 'scissors' && computerMove === 'paper')){
                 userScore++;
-                alert(`Win! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
-            } else if (result === 0) {
-                alert(`Draw! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
-            } else {
+                alert(`${userMove} beats ${computerMove}: Win! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
+            }
+            else {
                 computerScore++;
-                alert(`Loss! Points are ${"You: " + userScore + "- Computer: " + computerScore}`);
+                alert(`${userMove} loses to ${computerMove}:Loss! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
             }
         }
         play = prompt(`The game is finished! Points are ${"You: " + userScore + " - Computer: " + computerScore}. 
@@ -34,8 +41,9 @@ function getUserMove(){
 
     // Re-prompt if invalid input received
     while (move != 'rock' && move != 'paper' && move != 'scissors'){
-        move = Number(prompt("Invalid input. Please make a move by entering the following only: rock, paper, scissors"));
+        move = (prompt("Invalid input. Please make a move by entering the following only: rock, paper, scissors")).trim().toLowerCase();
     }
+
 }
 
 function getComputerMove(){
@@ -51,23 +59,6 @@ function getComputerMove(){
             return 'paper';
         case 3:
             return 'scissors';
-    }
-}
-
-function getResult(userMove, computerMove){
-    // 1- rock, 2- paper, 3- scissors
-    // userMove and computerMove input in Number type
-    // return 1 if it's a win, return -1 if it's a loss, return 0 if it's a draw
-
-    if (userMove === computerMove) {              // Draw
-        return 0;
-    } else if ( 
-        (userMove == 1 && computerMove == 3)      // Win: User's rock beats scissors
-        || userMove == computerMove + 1)          // Win: User's scissors beats paper; or paper beats rock
-        {
-        return 1;
-    } else {
-        return -1;                                 // Loss
     }
 }
 
