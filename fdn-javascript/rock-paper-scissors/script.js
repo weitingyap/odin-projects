@@ -44,6 +44,7 @@ function getUserMove(){
         move = (prompt("Invalid input. Please make a move by entering the following only: rock, paper, scissors")).trim().toLowerCase();
     }
 
+    return move;
 }
 
 function getComputerMove(){
