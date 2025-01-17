@@ -34,6 +34,9 @@
 
 #round-counter{
     border: var(--accent-color) 2px solid;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
 }
 
 #versus-col{
