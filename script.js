@@ -41,19 +41,19 @@ const playerCard = document.querySelector(".player.flex-col");
 const playerButtonsArr = Array.from(document.querySelectorAll(".player > .move-btn"));
 
 // register a click as a player move
-let playerMove;
+let playerMove, opponentMove;
 
 // use event delegation to reduce number of event listeners
 playerCard.addEventListener('click', function registerMove(event){
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
-        console.log(playerMove);
+        opponentMove = getOpponentMove();
         playerCard.removeEventListener('click', registerMove);
     }
 })
 
-function getComputerMove(){
-    // Randomly generate computer's move by returning a number from {1,2,3}
+function getOpponentMove(){
+    // Randomly generate opponent's move by returning a number from {1,2,3}
 
     let move = Math.ceil(Math.random()*3);
 
@@ -64,7 +64,7 @@ function getComputerMove(){
         case 2: 
             return 'Paper';
         case 3:
-            return 'scissors';
+            return 'Scissors';
     }
 }
 
