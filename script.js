@@ -89,17 +89,21 @@ function getOpponentMove(){
     // Randomly generate opponent's move by returning a number from {1,2,3}
 
     let move = Math.ceil(Math.random()*3);
+    console.log(`the move is ${move}`);
 
     // 1- Rock, 2- Paper, 3- Scissors
     switch (move) {
         case 1:
             move = 'Rock';
+            break;
         case 2: 
             move = 'Paper';
+            break;
         case 3:
             move = 'Scissors';
+            break;
     }
-
+    console.log(`the move is ${move}`);
     showSelectedMove(opponentButtonsArr, move);
     return move;
 }
