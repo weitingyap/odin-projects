@@ -70,3 +70,21 @@
 .opponent.name, .opponent.score {
     text-align: left;
 }
+
+ul.move-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li.move-btn{
+    height: 30px;
+    width: inherit;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
