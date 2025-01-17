@@ -37,6 +37,7 @@
 
 #round-counter{
     border: var(--accent-color) 2px solid;
+    background-color: whitesmoke;
     padding: 10px;
     margin: 10px;
     text-align: center;
