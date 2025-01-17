@@ -79,5 +79,5 @@ function getOpponentMove(){
 }
 
 function endGame(){
-    roundCounter.innerText("Game over!")
+    roundCounter.innerText = "Game over!";
 }
