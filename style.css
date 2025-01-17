@@ -43,6 +43,11 @@
     align-items: center;
 }
 
+.player.flex-col, .opponent.flex-col{
+    margin: 10px;
+    padding: 10px;
+}
+
 .player.flex-col{
     background-color: var(--player-one-color);
 }
