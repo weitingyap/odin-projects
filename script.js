@@ -14,11 +14,15 @@ let playerMove, opponentMove;
 // use event delegation to reduce number of event listeners
 playerCard.addEventListener('click', playMove);
 
-function playMove(event){
-    for (const btn of playerButtonsArr){
-        btn.disabled = false;
+function initButtons(buttonArr){
+    for (const btn of buttonArr){
         btn.classList.remove('no-hover');
+        btn.classList.remove('selected-move');
     }
+}
+
+function playMove(event){
+    initButtons(playerButtonsArr);
 
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
@@ -27,7 +31,6 @@ function playMove(event){
         // disable moves after move selection
         playerCard.removeEventListener('click', playMove);
         for (const btn of playerButtonsArr){
-            btn.disabled = true;
             btn.classList.add('no-hover');
         }
         
@@ -76,7 +79,6 @@ const opponentButtonsArr = Array.from(document.querySelectorAll('.opponent > .mo
 
 function showSelectedMove(buttonArr, move){
     for (const btn of buttonArr){
-        console.log("here! checking");
         if (btn.innerText === move){
             btn.classList.add('selected-move');
         }
