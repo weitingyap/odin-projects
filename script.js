@@ -1,5 +1,6 @@
 const playerCard = document.querySelector(".player.flex-col");
 const playerButtonsArr = Array.from(document.querySelectorAll(".player > .move-btn"));
+const opponentButtonsArr = Array.from(document.querySelectorAll('.opponent > .move-btn'));
 const roundCounter = document.querySelector("#round-counter");
 const [playerScoreElem, opponentScoreElem] = [document.querySelector(".player.score"), document.querySelector(".opponent.score")];
 
@@ -33,6 +34,7 @@ function playMove(event){
             btn.classList.add('no-hover');
         }
         
+        initButtons(opponentButtonsArr);
         opponentMove = getOpponentMove();
 
         [roundCnt, playerScore, opponentScore] = showResult(roundCnt, numRounds, playerMove, opponentMove, playerScore, opponentScore);
@@ -74,8 +76,6 @@ function updateScores(playerScore, opponentScore){
     playerScoreElem.innerText = playerScore;
     opponentScoreElem.innerText = opponentScore;
 }
-
-const opponentButtonsArr = Array.from(document.querySelectorAll('.opponent > .move-btn'));
 
 function showSelectedMove(buttonArr, move){
     for (const btn of buttonArr){
