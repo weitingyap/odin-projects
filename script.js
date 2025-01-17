@@ -69,6 +69,7 @@ function showResult(roundCnt, numRounds, playerMove, opponentMove, playerScore, 
             Loss! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     }
     roundCnt++;
+    
     return [roundCnt, playerScore, opponentScore]
 }
 
@@ -109,11 +110,14 @@ function getOpponentMove(){
 }
 
 function endGame(){
+    console.log("this is called");
+    let endGameText;
     if (playerScore === opponentScore) {
-        let endGameText = "It's a draw! Better luck next time.";
-    } else if (playerscore < opponentScore){
-        let endGameText = "You lost! Better luck next time.";
+        endGameText = "Last round - it's a draw! Better luck next time.";
+    } else if (playerScore < opponentScore){
+        endGameText = "Last round - you lost! Better luck next time.";
     } else {
-        let endGameText = "You won! Thanks for playing."
+        endGameText = "Last round - you won! Thanks for playing.";
     }
+    roundCounter.innerText = endGameText;
 }
