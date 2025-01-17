@@ -89,3 +89,7 @@ button.move-btn{
     justify-content: center;
     align-items: center;
 }
+
+.player > .move-btn:hover{
+    border: var(--accent-color) 2px solid;
+}
