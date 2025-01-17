@@ -105,5 +105,11 @@ function getOpponentMove(){
 }
 
 function endGame(){
-    roundCounter.innerText = "Game over!";
+    if (playerScore === opponentScore) {
+        let endGameText = "It's a draw! Better luck next time.";
+    } else if (playerscore < opponentScore){
+        let endGameText = "You lost! Better luck next time.";
+    } else {
+        let endGameText = "You won! Thanks for playing."
+    }
 }
