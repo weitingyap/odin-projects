@@ -5,8 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Rock Paper Scissors Game</h1>
+<body id = "body" class = "flex-row">
+
+    <div id = "sidebar">
+        <h1>Rock Paper Scissors Game</h1>
+    </div>
+
+    <div class="flex-col">
+        <div id = "round-counter">
+            This is round X of X.
+        </div>
+        
+        <div class="flex-row">
+            <div class = "player flex-col">
+                <div class = "player name">
+                    You
+                </div>
+                <div class = "player score">
+                    3
+                </div>
+                <div class = "player move">
+                    Make your move!
+                </div>
+            </div>
+        
+            <div class = "versus-col">
+                vs
+            </div>
+        
+            <div class = "opponent flex-col">
+                <div class = "opponent name">
+                    Computer
+                </div>
+                <div class = "opponent score">
+                    3
+                </div>
+                <div class = "opponent move">
+                    Computer picks...
+                </div>
+            </div>
+        </div>
+
+        
+    
+    </div>
+    
 </body>
 </html>

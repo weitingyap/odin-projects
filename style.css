@@ -1,0 +1,26 @@
+:root{
+    --font-color: #311E10;
+    --background-color: #ECE4B7;
+    --player-one-color: #D9DD92;
+    --player-two-color: #EABE7C;
+    --accent-color: #DD6031;
+}
+
+#body {
+    background-color: var(--background-color);
+}
+
+.flex-row{
+    display: flex;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar{
+    background-color: var(--accent-color);
+    color: var(--font-color);
+    align-self: stretch;
+}
