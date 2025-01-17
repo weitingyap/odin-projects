@@ -19,8 +19,28 @@
     flex-direction: column;
 }
 
+#sidebar, #round-counter, .player.flex-col, .opponent.flex-col{
+    border-radius: 10px;
+}
+
 #sidebar{
     background-color: var(--accent-color);
     color: var(--font-color);
     align-self: stretch;
+}
+
+#round-counter{
+    border: var(--accent-color) 2px solid;
+}
+
+#versus-col{
+    align-items: center;
+}
+
+.player.flex-col{
+    background-color: var(--player-one-color);
+}
+
+.opponent.flex-col{
+    background-color: var(--player-two-color);
 }
