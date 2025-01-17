@@ -22,7 +22,6 @@ function initButtons(buttonArr){
 }
 
 function playMove(event){
-    initButtons(playerButtonsArr);
 
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
@@ -41,6 +40,7 @@ function playMove(event){
 
         if (roundCnt <= numRounds){
             // reactivate moves if the game is still ongoing
+            initButtons(playerButtonsArr);
             playerCard.addEventListener('click', playMove);
         } else {
             endGame();
