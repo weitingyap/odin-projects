@@ -1,54 +1,37 @@
-// function startGameInstance(){
-//     // Initiates a Scissors Paper Stone game
-
-//     const numRounds = 5;               // Set number of rounds per game
-
-//     let play = 1;
-
-//     while (play){
-//         let userScore = computerScore = 0; // Initialize scores
-
-//         for (let n = 0; n < numRounds; n++){
-
-//             userMove = getUserMove();
-//             computerMove = getComputerMove();
-
-//             if (userMove === computerMove){
-//                 alert(`${userMove} meets ${computerMove}: Draw! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
-//             } else if (
-//                 (userMove === 'paper' && computerMove === 'rock') ||
-//                 (userMove === 'rock'  && computerMove === 'scissors') || 
-//                 (userMove === 'scissors' && computerMove === 'paper')){
-//                 userScore++;
-//                 alert(`${userMove} beats ${computerMove}: Win! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
-//             }
-//             else {
-//                 computerScore++;
-//                 alert(`${userMove} loses to ${computerMove}:Loss! Points are ${"You: " + userScore + " - Computer: " + computerScore}`);
-//             }
-//         }
-//         play = prompt(`The game is finished! Points are ${"You: " + userScore + " - Computer: " + computerScore}. 
-//             Do you want to play again? Enter 1 if yes, 0 if no.`);
-//         while ( play != 0 && play != 1){
-//             prompt ("Invalid input. Do you want to play again? Enter 1 if yes, 0 if no.")
-//         }
-//     }
-
-    
-// }
-
 const playerCard = document.querySelector(".player.flex-col");
 const playerButtonsArr = Array.from(document.querySelectorAll(".player > .move-btn"));
+const roundCounter = document.querySelector("#round-counter");
+
+// initialize scores
+let playerScore = opponentScore = 0;
 
 // register a click as a player move
 let playerMove, opponentMove;
+
+function showResult(playerMove, opponentMove){
+    if (playerMove === opponentMove){
+        roundCounter.innerText = (`${playerMove} meets ${opponentMove}: Draw! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+    } else if (
+        (playerMove === 'Paper' && opponentMove === 'Rock') ||
+        (playerMove === 'Rock'  && opponentMove === 'Scissors') || 
+        (playerMove === 'Scissors' && opponentMove === 'Paper')){
+        playerScore++;
+        roundCounter.innerText = (`${playerMove} beats ${opponentMove}: Win! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+    }
+    else {
+        opponentScore++;
+        roundCounter.innerText = (`${playerMove} loses to ${opponentMove}: Loss! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+    }
+}
 
 // use event delegation to reduce number of event listeners
 playerCard.addEventListener('click', function registerMove(event){
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
-        opponentMove = getOpponentMove();
         playerCard.removeEventListener('click', registerMove);
+        
+        opponentMove = getOpponentMove();
+        showResult(playerMove, opponentMove);
     }
 })
 
@@ -57,7 +40,7 @@ function getOpponentMove(){
 
     let move = Math.ceil(Math.random()*3);
 
-    // 1- rock, 2- paper, 3- scissors
+    // 1- Rock, 2- Paper, 3- Scissors
     switch (move) {
         case 1:
             return 'Rock';
@@ -67,5 +50,3 @@ function getOpponentMove(){
             return 'Scissors';
     }
 }
-
-// startGameInstance();
