@@ -1,43 +1,67 @@
 const playerCard = document.querySelector(".player.flex-col");
 const playerButtonsArr = Array.from(document.querySelectorAll(".player > .move-btn"));
 const roundCounter = document.querySelector("#round-counter");
+const [playerScoreElem, opponentScoreElem] = [document.querySelector(".player.score"), document.querySelector(".opponent.score")];
+
+const numRounds = 5;
 
 // initialize scores
 let playerScore = opponentScore = 0;
 
+let roundCnt = 1;
+
 // register a click as a player move
 let playerMove, opponentMove;
 
-function showResult(roundCnt, playerMove, opponentMove, playerScore, opponentScore){
+// use event delegation to reduce number of event listeners
+playerCard.addEventListener('click', playMove);
+
+function playMove(event){
+    if (playerButtonsArr.includes(event.target)){
+        playerMove = event.target.innerText;
+
+        // disable after move selection
+        playerCard.removeEventListener('click', playMove);
+        
+        opponentMove = getOpponentMove();
+
+        [roundCnt, playerScore, opponentScore] = showResult(roundCnt, numRounds, playerMove, opponentMove, playerScore, opponentScore);
+        updateScores(playerScore, opponentScore);
+
+        if (roundCnt <= numRounds){
+            playerCard.addEventListener('click', playMove);
+        } else {
+            endGame();
+        }
+    }
+}
+
+// determine and show result
+function showResult(roundCnt, numRounds, playerMove, opponentMove, playerScore, opponentScore){
     if (playerMove === opponentMove){
-        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} meets ${opponentMove}
+        roundCounter.innerText = (`Round ${roundCnt} of ${numRounds}: ${playerMove} meets ${opponentMove}
             Draw! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     } else if (
         (playerMove === 'Paper' && opponentMove === 'Rock') ||
         (playerMove === 'Rock'  && opponentMove === 'Scissors') || 
         (playerMove === 'Scissors' && opponentMove === 'Paper')){
         playerScore++;
-        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} beats ${opponentMove}
+        roundCounter.innerText = (`Round ${roundCnt} of ${numRounds}: ${playerMove} beats ${opponentMove}
             Win! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     }
     else {
         opponentScore++;
-        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} loses to ${opponentMove}
+        roundCounter.innerText = (`Round ${roundCnt} of ${numRounds}: ${playerMove} loses to ${opponentMove}
             Loss! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     }
+    roundCnt++;
     return [roundCnt, playerScore, opponentScore]
 }
 
-// use event delegation to reduce number of event listeners
-playerCard.addEventListener('click', function registerMove(event){
-    if (playerButtonsArr.includes(event.target)){
-        playerMove = event.target.innerText;
-        playerCard.removeEventListener('click', registerMove);
-        
-        opponentMove = getOpponentMove();
-        showResult(1, playerMove, opponentMove, playerScore, opponentScore);
-    }
-})
+function updateScores(playerScore, opponentScore){
+    playerScoreElem.innerText = playerScore;
+    opponentScoreElem.innerText = opponentScore;
+}
 
 function getOpponentMove(){
     // Randomly generate opponent's move by returning a number from {1,2,3}
@@ -53,4 +77,8 @@ function getOpponentMove(){
         case 3:
             return 'Scissors';
     }
+}
+
+function endGame(){
+    roundCounter.innerText("Game over!")
 }
