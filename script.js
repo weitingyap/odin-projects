@@ -8,20 +8,24 @@ let playerScore = opponentScore = 0;
 // register a click as a player move
 let playerMove, opponentMove;
 
-function showResult(playerMove, opponentMove){
+function showResult(roundCnt, playerMove, opponentMove, playerScore, opponentScore){
     if (playerMove === opponentMove){
-        roundCounter.innerText = (`${playerMove} meets ${opponentMove}: Draw! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} meets ${opponentMove}
+            Draw! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     } else if (
         (playerMove === 'Paper' && opponentMove === 'Rock') ||
         (playerMove === 'Rock'  && opponentMove === 'Scissors') || 
         (playerMove === 'Scissors' && opponentMove === 'Paper')){
         playerScore++;
-        roundCounter.innerText = (`${playerMove} beats ${opponentMove}: Win! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} beats ${opponentMove}
+            Win! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     }
     else {
         opponentScore++;
-        roundCounter.innerText = (`${playerMove} loses to ${opponentMove}: Loss! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
+        roundCounter.innerText = (`Round ${roundCnt}: ${playerMove} loses to ${opponentMove}
+            Loss! Score is ${"you: " + playerScore + " - opponent: " + opponentScore}`);
     }
+    return [roundCnt, playerScore, opponentScore]
 }
 
 // use event delegation to reduce number of event listeners
@@ -31,7 +35,7 @@ playerCard.addEventListener('click', function registerMove(event){
         playerCard.removeEventListener('click', registerMove);
         
         opponentMove = getOpponentMove();
-        showResult(playerMove, opponentMove);
+        showResult(1, playerMove, opponentMove, playerScore, opponentScore);
     }
 })
 
