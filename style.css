@@ -47,6 +47,7 @@
 .player.flex-col, .opponent.flex-col{
     margin: 10px;
     padding: 10px;
+    min-width: 35vh;
 }
 
 .player.flex-col{
