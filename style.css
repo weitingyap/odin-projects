@@ -29,7 +29,8 @@
     background-color: var(--accent-color);
     color: var(--font-color);
     align-self: stretch;
-    max-width: 25vh;
+    flex-grow: 1;
+    min-width: 25vh;
     padding: 20px;
     margin: 10px;
 }
@@ -39,16 +40,19 @@
     padding: 10px;
     margin: 10px;
     text-align: center;
+    flex-grow: 1;
 }
 
 #versus-col{
     align-items: center;
+    flex-grow: 1;
 }
 
 .player.flex-col, .opponent.flex-col{
     margin: 10px;
     padding: 10px;
     min-width: 35vh;
+    flex-grow: 1;
 }
 
 .player.flex-col{
