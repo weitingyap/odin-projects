@@ -44,3 +44,16 @@
 .opponent.flex-col{
     background-color: var(--player-two-color);
 }
+
+.name{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.player.name {
+    text-align: right;
+}
+
+.opponent.name{
+    text-align: left;
+}
