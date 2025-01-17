@@ -5,14 +5,12 @@ const [playerScoreElem, opponentScoreElem] = [document.querySelector(".player.sc
 
 const numRounds = 5;
 
-// initialize scores
+// initialize values
 let playerScore = opponentScore = 0;
-
 let roundCnt = 1;
-
-// register a click as a player move
 let playerMove, opponentMove;
 
+// register a click as a player move
 // use event delegation to reduce number of event listeners
 playerCard.addEventListener('click', playMove);
 
@@ -20,7 +18,7 @@ function playMove(event){
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
 
-        // disable after move selection
+        // disable moves after move selection
         playerCard.removeEventListener('click', playMove);
         
         opponentMove = getOpponentMove();
@@ -29,6 +27,7 @@ function playMove(event){
         updateScores(playerScore, opponentScore);
 
         if (roundCnt <= numRounds){
+            // reactivate moves if the game is still ongoing
             playerCard.addEventListener('click', playMove);
         } else {
             endGame();
