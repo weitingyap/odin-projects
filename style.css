@@ -76,7 +76,7 @@
     text-align: left;
 }
 
-button.move-btn{
+.move-btn{
     align-self: center;
     height: 30px;
     width: 100%;
@@ -91,5 +91,13 @@ button.move-btn{
 }
 
 .player > .move-btn:hover{
+    border: var(--accent-color) 2px solid;
+}
+
+.no-hover:hover{
+    pointer-events: none;
+}
+
+.selected-move{
     border: var(--accent-color) 2px solid;
 }

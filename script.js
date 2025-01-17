@@ -15,11 +15,21 @@ let playerMove, opponentMove;
 playerCard.addEventListener('click', playMove);
 
 function playMove(event){
+    for (const btn of playerButtonsArr){
+        btn.disabled = false;
+        btn.classList.remove('no-hover');
+    }
+
     if (playerButtonsArr.includes(event.target)){
         playerMove = event.target.innerText;
+        event.target.classList.add('selected-move');
 
         // disable moves after move selection
         playerCard.removeEventListener('click', playMove);
+        for (const btn of playerButtonsArr){
+            btn.disabled = true;
+            btn.classList.add('no-hover');
+        }
         
         opponentMove = getOpponentMove();
 
@@ -62,6 +72,17 @@ function updateScores(playerScore, opponentScore){
     opponentScoreElem.innerText = opponentScore;
 }
 
+const opponentButtonsArr = Array.from(document.querySelectorAll('.opponent > .move-btn'));
+
+function showSelectedMove(buttonArr, move){
+    for (const btn of buttonArr){
+        console.log("here! checking");
+        if (btn.innerText === move){
+            btn.classList.add('selected-move');
+        }
+    }
+}
+
 function getOpponentMove(){
     // Randomly generate opponent's move by returning a number from {1,2,3}
 
@@ -70,12 +91,15 @@ function getOpponentMove(){
     // 1- Rock, 2- Paper, 3- Scissors
     switch (move) {
         case 1:
-            return 'Rock';
+            move = 'Rock';
         case 2: 
-            return 'Paper';
+            move = 'Paper';
         case 3:
-            return 'Scissors';
+            move = 'Scissors';
     }
+
+    showSelectedMove(opponentButtonsArr, move);
+    return move;
 }
 
 function endGame(){
