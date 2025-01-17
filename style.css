@@ -27,6 +27,9 @@
     background-color: var(--accent-color);
     color: var(--font-color);
     align-self: stretch;
+    max-width: 25vh;
+    padding: 20px;
+    margin: 10px;
 }
 
 #round-counter{
