@@ -81,7 +81,7 @@ ul.move-list{
 li.move-btn{
     height: 30px;
     width: inherit;
-    background-color: var(--background-color);
+    background-color: whitesmoke;
     border-radius: 10px;
     padding: 5px;
     margin: 10px;
