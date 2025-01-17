@@ -48,15 +48,15 @@
     background-color: var(--player-two-color);
 }
 
-.name{
+.name, .score{
     font-size: larger;
     font-weight: bolder;
 }
 
-.player.name {
+.player.name, .player.score {
     text-align: right;
 }
 
-.opponent.name{
+.opponent.name, .opponent.score {
     text-align: left;
 }
